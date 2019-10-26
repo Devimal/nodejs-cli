@@ -1,0 +1,24 @@
+{
+  "name": "devimal-cli",
+  "version": "1.0.0",
+  "description": "This a companion project for a https://devimalplanet.com post.",
+  "main": "index.js",
+  "bin": "./index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Devimal/basic-cli.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Devimal/basic-cli/issues"
+  },
+  "homepage": "https://github.com/Devimal/basic-cli#readme",
+  "devDependencies": {
+    "eslint": "^6.6.0"
+  }
+}

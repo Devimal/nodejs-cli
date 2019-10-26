@@ -20,5 +20,8 @@
   "homepage": "https://github.com/Devimal/basic-cli#readme",
   "devDependencies": {
     "eslint": "^6.6.0"
+  },
+  "dependencies": {
+    "inquirer": "^7.0.0"
   }
 }

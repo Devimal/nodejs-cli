@@ -4,12 +4,17 @@ const inquirer = require("inquirer");
 const open = require("open");
 const package = require("./package.json");
 const commander = require("commander");
-const figlet = require('figlet')
+const figlet = require("figlet");
+const ora = require("ora");
 
 const devilmalUrl = "devimalplanet.com";
 const program = setupCommander();
 
 async function run() {
+    const spinner = ora({text: 'Simulating some slow async task. What a Devimal Planet...', spinner: 'earth'}).start();
+    await simulateSlowAsyncTask(5000);
+    spinner.succeed('Heavy task finished!\n')
+
     const ranWithArgs = program.skipPrompts || program.url;
     if (!ranWithArgs) return interactiveRun();
 
@@ -46,7 +51,7 @@ async function interactiveRun() {
 }
 
 async function staticRun(url) {
-    console.log(await generateAsciiArt())
+    console.log(await generateAsciiArt());
     await openUlr(url);
 }
 
@@ -76,19 +81,29 @@ function setupCommander() {
 async function generateAsciiArt() {
     return new Promise((resolve, reject) => {
         // figlet docs: https://www.npmjs.com/package/figlet
-        figlet.text('Devimal', {
-            font: 'ANSI Shadow',
-            horizontalLayout: 'default',
-            verticalLayout: 'default'
-        }, function(err, data) {
-            if (err) {
-                console.log('Something went wrong...');
-                console.dir(err);
-                reject(err)
+        figlet.text(
+            "Devimal",
+            {
+                font: "ANSI Shadow",
+                horizontalLayout: "default",
+                verticalLayout: "default"
+            },
+            function(err, data) {
+                if (err) {
+                    console.log("Something went wrong...");
+                    console.dir(err);
+                    reject(err);
+                }
+                resolve(data);
             }
-            resolve(data)
-        });
-    })
+        );
+    });
+}
+
+async function simulateSlowAsyncTask(ms) {
+    return new Promise(resolve => {
+        setTimeout(() => resolve(), ms);
+    });
 }
 
 run();

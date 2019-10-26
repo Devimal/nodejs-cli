@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 const inquirer = require("inquirer");
+const open = require("open");
 
 async function run() {
     console.log("Hi! 👋  Welcome devimal-cli!");
@@ -31,7 +32,8 @@ async function run() {
         urlToVisit = someFunUrl;
     }
 
-    console.log(urlToVisit);
+    urlToVisit = urlToVisit.startsWith('http') ? urlToVisit : 'https://' + urlToVisit
+    await open(urlToVisit);
 }
 
 run();

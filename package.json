@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "description": "This a companion project for a https://devimalplanet.com post.",
   "main": "index.js",
-  "bin": "./index.js",
+  "bin": {
+    "devimal-cli": "./index.js",
+    "devimal-joy": "./joy.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

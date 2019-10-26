@@ -4,6 +4,7 @@ const inquirer = require("inquirer");
 const open = require("open");
 const package = require("./package.json");
 const commander = require("commander");
+const figlet = require('figlet')
 
 const devilmalUrl = "devimalplanet.com";
 const program = setupCommander();
@@ -45,7 +46,7 @@ async function interactiveRun() {
 }
 
 async function staticRun(url) {
-    // for now just opens url
+    console.log(await generateAsciiArt())
     await openUlr(url);
 }
 
@@ -70,6 +71,24 @@ function setupCommander() {
         .parse(process.argv);
 
     return program;
+}
+
+async function generateAsciiArt() {
+    return new Promise((resolve, reject) => {
+        // figlet docs: https://www.npmjs.com/package/figlet
+        figlet.text('Devimal', {
+            font: 'ANSI Shadow',
+            horizontalLayout: 'default',
+            verticalLayout: 'default'
+        }, function(err, data) {
+            if (err) {
+                console.log('Something went wrong...');
+                console.dir(err);
+                reject(err)
+            }
+            resolve(data)
+        });
+    })
 }
 
 run();

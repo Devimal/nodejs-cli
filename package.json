@@ -1,6 +1,6 @@
 {
   "name": "devimal-cli",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "This a companion project for a https://devimalplanet.com post.",
   "main": "index.js",
   "bin": {
